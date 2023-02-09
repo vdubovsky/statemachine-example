@@ -9,5 +9,4 @@ public class StateMachineExampleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StateMachineExampleApplication.class, args);
 	}
-
 }

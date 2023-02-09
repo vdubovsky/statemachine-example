@@ -5,7 +5,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class ActionDto {
+public class PingPongActionBO {
 
     private String action;
 }

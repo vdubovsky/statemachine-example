@@ -1,0 +1,8 @@
+app:
+  state-machine:
+    repository:
+      type: IN_MEMORY
+
+logging:
+  level:
+    io.vdubovsky.statemachineexample: trace

@@ -1,4 +1,4 @@
-package io.vdubovsky.statemachineexample.statemachine.configuration;
+package io.vdubovsky.statemachineexample.statemachine.configuration.automat;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -7,17 +7,14 @@ import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
-import org.springframework.statemachine.listener.StateMachineListener;
 
-import static io.vdubovsky.statemachineexample.statemachine.configuration.StateMachine2FactoryConfiguration.MACHINE_ID;
+import static io.vdubovsky.statemachineexample.statemachine.configuration.automat.StateMachine2FactoryConfiguration.MACHINE_ID;
 
 @Configuration
 @RequiredArgsConstructor
 @EnableStateMachineFactory(name = MACHINE_ID)
 public class StateMachine2FactoryConfiguration extends StateMachineConfigurerAdapter<String, String> {
     final static String MACHINE_ID = "PROCESS_2_";
-
-    private final StateMachineListener<String, String> loggingListener;
 
     @Override
     public void configure(StateMachineStateConfigurer<String, String> states) throws Exception {
@@ -43,7 +40,7 @@ public class StateMachine2FactoryConfiguration extends StateMachineConfigurerAda
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<String, String> config) throws Exception {
-        config.withConfiguration().machineId(MACHINE_ID).listener(loggingListener);
+        config.withConfiguration().machineId(MACHINE_ID);
         super.configure(config);
     }
 }

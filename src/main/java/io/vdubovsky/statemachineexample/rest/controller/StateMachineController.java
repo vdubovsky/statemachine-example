@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -16,10 +15,21 @@ public class StateMachineController {
     private final StateMachineService stateMachineService;
 
     @PostMapping("/{processDefinitionId}/start")
-    public Mono<UUID> startProcess(
+    public Mono<Object> startProcess(
             @PathVariable(name = "processDefinitionId") String processDefinitionId,
-            @RequestBody Map<String, Object> parameters) {
+            @RequestBody Object input) {
 
-        return Mono.defer(() -> Mono.justOrEmpty(stateMachineService.startProcess(processDefinitionId, parameters)));
+        return Mono.defer(() -> Mono.justOrEmpty(stateMachineService.executeProcessAndGetResult(processDefinitionId, input)));
+    }
+
+    @PostMapping("{processDefinitionId}/processes/{processId}/events/{event}")
+    public Mono<Object> sendEvent(
+            @PathVariable(name = "processDefinitionId") String processDefinitionId,
+            @PathVariable(name = "processId") UUID processId,
+            @PathVariable(name = "event") String event,
+            @RequestBody Object input
+    ) {
+
+        return Mono.defer(() -> Mono.justOrEmpty(stateMachineService.sendEvent(processDefinitionId, processId, event, input)));
     }
 }

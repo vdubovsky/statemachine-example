@@ -1,12 +1,12 @@
 package io.vdubovsky.statemachineexample.statemachine;
 
-import java.util.Map;
+
 import java.util.UUID;
 
 public interface StateMachineService {
 
-    UUID startProcess(String processDefinitionId, Map<String, Object> context);
+    Object executeProcessAndGetResult(String processDefinitionId, Object input);
 
-    Map<String,Object> executeProcessAndGetResult(String processDefinitionId, Map<String, Object> args);
+    Object sendEvent(String processDefinitionId, UUID processId, String event, Object input);
 }
 
