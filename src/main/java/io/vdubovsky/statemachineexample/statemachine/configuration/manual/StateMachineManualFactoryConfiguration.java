@@ -1,8 +1,8 @@
 package io.vdubovsky.statemachineexample.statemachine.configuration.manual;
 
-import io.vdubovsky.statemachineexample.statemachine.configuration.common.ContextConfigurerListener;
-import io.vdubovsky.statemachineexample.statemachine.configuration.common.InterceptorInjectorListener;
-import io.vdubovsky.statemachineexample.statemachine.configuration.common.PersistableLoggingListener;
+import io.vdubovsky.statemachineexample.statemachine.listener.ContextConfigurerListener;
+import io.vdubovsky.statemachineexample.statemachine.listener.InterceptorInjectorListener;
+import io.vdubovsky.statemachineexample.statemachine.listener.PersistableLoggingListener;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;

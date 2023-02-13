@@ -1,11 +1,11 @@
-package io.vdubovsky.statemachineexample.statemachine.configuration.common;
+package io.vdubovsky.statemachineexample.statemachine.listener;
 
+import io.vdubovsky.statemachineexample.statemachine.interceptor.StateUpdater;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.access.StateMachineAccess;
 import org.springframework.statemachine.listener.StateMachineListenerAdapter;
-import org.springframework.statemachine.support.StateMachineInterceptor;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;

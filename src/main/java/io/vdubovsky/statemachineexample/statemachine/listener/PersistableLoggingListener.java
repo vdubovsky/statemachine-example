@@ -1,4 +1,4 @@
-package io.vdubovsky.statemachineexample.statemachine.configuration.common;
+package io.vdubovsky.statemachineexample.statemachine.listener;
 
 import io.vdubovsky.statemachineexample.model.GenericExecutionResult;
 import io.vdubovsky.statemachineexample.statemachine.repository.StateMachineRepository;

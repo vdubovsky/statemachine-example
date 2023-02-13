@@ -1,4 +1,4 @@
-package io.vdubovsky.statemachineexample.statemachine.configuration.common;
+package io.vdubovsky.statemachineexample.statemachine.interceptor;
 
 import io.vdubovsky.statemachineexample.model.GenericExecutionResult;
 import lombok.extern.slf4j.Slf4j;

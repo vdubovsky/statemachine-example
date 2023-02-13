@@ -1,19 +1,14 @@
 package io.vdubovsky.statemachineexample.statemachine.processor;
 
-import io.vdubovsky.statemachineexample.model.ExecutionInfo;
 import io.vdubovsky.statemachineexample.model.GenericExecutionResult;
 import io.vdubovsky.statemachineexample.statemachine.StateMachineProcessor;
-import io.vdubovsky.statemachineexample.statemachine.configuration.common.ResultProviderListener;
-import io.vdubovsky.statemachineexample.statemachine.repository.StateMachineRepository;
+import io.vdubovsky.statemachineexample.statemachine.listener.ResultProviderListener;
 import lombok.RequiredArgsConstructor;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.async.DeferredResult;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import static io.vdubovsky.statemachineexample.model.ApplicationConstants.GENERIC_EXECUTION_RESULT;
