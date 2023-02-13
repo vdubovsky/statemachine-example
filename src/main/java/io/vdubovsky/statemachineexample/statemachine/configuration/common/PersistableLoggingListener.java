@@ -23,7 +23,7 @@ public class PersistableLoggingListener extends StateMachineListenerAdapter {
 
     @Override
     public void stateChanged(State from, State to) {
-        log.debug("Manual machine: State changed from: {} to: {}", from, to);
+        log.debug("State machine: State changed from: {} to: {}", from, to);
     }
 
     @Override
