@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static io.vdubovsky.statemachineexample.model.ApplicationConstants.GENERIC_EXECUTION_RESULT;
+import static io.vdubovsky.statemachineexample.statemachine.configuration.manual.StateMachineManualFactoryConfiguration.MACHINE_ID;
 
 @Component
 @RequiredArgsConstructor
@@ -41,7 +42,7 @@ public class ManualStateMachineProcessorImpl implements StateMachineProcessor {
 
     @Override
     public String getId() {
-        return "MANUAL";
+        return MACHINE_ID;
     }
 
     @Override

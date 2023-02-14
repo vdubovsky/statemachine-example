@@ -13,4 +13,8 @@ public class GenericExecutionResult<I, O> implements Serializable {
 
     private I input;
     private O output;
+
+    public void setOutput(O output) {
+        this.output = output;
+    }
 }

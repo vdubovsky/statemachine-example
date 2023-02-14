@@ -35,7 +35,7 @@ public class ContextConfigurerListener extends StateMachineListenerAdapter {
 
     private ExecutionInfo buildExecutionInfo(StateMachine stateMachine) {
         return new ExecutionInfo()
-                .setCurrentState(stateMachine.getState() == null ? null : (String) stateMachine.getState().getId())
+                .setCurrentState(stateMachine.getState() == null ? null : stateMachine.getState().getId().toString())
                 .setProcessId(stateMachine.getUuid())
                 .setProcessDefinitionId(stateMachine.getId())
                 .setStartedAt(LocalDateTime.now());

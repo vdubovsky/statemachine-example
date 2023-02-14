@@ -20,7 +20,7 @@ import static io.vdubovsky.statemachineexample.statemachine.configuration.manual
 @Slf4j
 public class StateMachineManualFactoryConfiguration extends StateMachineConfigurerAdapter<String, String> {
 
-    final static String MACHINE_ID = "MANUAL";
+    public final static String MACHINE_ID = "MANUAL";
     private final PersistableLoggingListener persistableLoggingListener;
     private final InterceptorInjectorListener interceptorInjectorListener;
     private final ContextConfigurerListener contextConfigurerListener;

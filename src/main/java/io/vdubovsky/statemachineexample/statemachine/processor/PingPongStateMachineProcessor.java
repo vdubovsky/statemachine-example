@@ -1,6 +1,9 @@
 package io.vdubovsky.statemachineexample.statemachine.processor;
 
+import com.google.gson.Gson;
 import io.vdubovsky.statemachineexample.model.GenericExecutionResult;
+import io.vdubovsky.statemachineexample.model.pingpong.PingPongInputBO;
+import io.vdubovsky.statemachineexample.model.pingpong.PingPongOutputBO;
 import io.vdubovsky.statemachineexample.statemachine.StateMachineProcessor;
 import io.vdubovsky.statemachineexample.statemachine.listener.ResultProviderListener;
 import lombok.RequiredArgsConstructor;
@@ -10,11 +13,13 @@ import org.springframework.web.context.request.async.DeferredResult;
 import reactor.core.publisher.Mono;
 
 import static io.vdubovsky.statemachineexample.model.ApplicationConstants.GENERIC_EXECUTION_RESULT;
-import static io.vdubovsky.statemachineexample.statemachine.configuration.automat.StateMachineAutomatConfiguration.MACHINE_ID;
+import static io.vdubovsky.statemachineexample.statemachine.configuration.pingpong.PingPongStateMachineFactoryConfiguration.MACHINE_ID;
 
 @Component
 @RequiredArgsConstructor
-public class AutomatStateMachineProcessorImpl implements StateMachineProcessor {
+public class PingPongStateMachineProcessor implements StateMachineProcessor {
+
+    private final Gson gson;
 
     @Override
     public Object startProcessAndGetResult(StateMachine stateMachine, Object input) {
@@ -26,8 +31,15 @@ public class AutomatStateMachineProcessorImpl implements StateMachineProcessor {
         GenericExecutionResult executionResult = (GenericExecutionResult) stateMachine.getExtendedState()
                 .getVariables().get(GENERIC_EXECUTION_RESULT);
         executionResult.setInput(input);
-        executionResult.setOutput(executionResult.getExecutionInfo());
+        PingPongInputBO inputBO;
+        try {
+            inputBO = gson.fromJson(gson.toJsonTree(input), PingPongInputBO.class);
+        } catch (Exception e) {
+            throw new RuntimeException("Could not deserialize input");
+        }
 
+        executionResult.setOutput(new PingPongOutputBO().setPlayer(inputBO.getPlayer()));
+        executionResult.setInput(inputBO);
         stateMachine.addStateListener(new ResultProviderListener(result));
         return result;
     }

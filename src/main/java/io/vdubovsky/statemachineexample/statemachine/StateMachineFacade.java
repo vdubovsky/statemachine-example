@@ -22,8 +22,7 @@ public class StateMachineFacade implements StateMachineService {
 
     public StateMachineFacade(
             List<StateMachineFactory> stateMachinesFactories,
-            List<StateMachineProcessor> stateMachineProcessors,
-            InMemoryStateMachineRepository stateMachineRepository) {
+            List<StateMachineProcessor> stateMachineProcessors) {
 
         this.stateMachineFactories = stateMachinesFactories.stream().collect(
                 Collectors.toMap(factory -> factory.getStateMachine().getId(), Function.identity()));

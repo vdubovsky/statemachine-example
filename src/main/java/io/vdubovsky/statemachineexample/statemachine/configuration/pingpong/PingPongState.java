@@ -1,6 +1,6 @@
 package io.vdubovsky.statemachineexample.statemachine.configuration.pingpong;
 
-public enum State {
+public enum PingPongState {
     PING_PONG_IN_STATE,
     PING_PONG_SET_ACTION_PING_STATE,
     PING_PONG_SET_ACTION_PONG_STATE,

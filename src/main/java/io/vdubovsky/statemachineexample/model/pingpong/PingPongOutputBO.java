@@ -7,6 +7,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PingPongOutputBO {
 
-    private Integer player;
+    private String player;
     private Integer retryCount;
 }

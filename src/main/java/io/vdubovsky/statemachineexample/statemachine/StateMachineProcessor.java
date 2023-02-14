@@ -10,5 +10,7 @@ public interface StateMachineProcessor {
 
     String getId();
 
-    Object sendEventAndGetResult(UUID processId, String event, Object input);
+    default Object sendEventAndGetResult(UUID processId, String event, Object input) {
+        throw new RuntimeException(getId() + " state machine doesn't support incoming events");
+    }
 }
