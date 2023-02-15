@@ -32,11 +32,13 @@ public class PingPongStateMachineSetResponseAction implements ActionAware<PingPo
 
     @Override
     public void execute(StateContext<PingPongState, PingPongEvent> context) {
+        //Action
         Integer retryCount = context.getExtendedState().get("retryCount", Integer.class);
         GenericExecutionResult executionResult = context.getExtendedState().get(GENERIC_EXECUTION_RESULT, GenericExecutionResult.class);
         PingPongOutputBO output = (PingPongOutputBO) executionResult.getOutput();
         output.setRetryCount(retryCount == null ? 0 : retryCount);
 
+        //Event
         context.getStateMachine().sendEvent(
                         Mono.just(MessageBuilder.withPayload(PING_PONG_TO_OUT_EVENT).build()))
                 .subscribe();

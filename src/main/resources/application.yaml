@@ -5,4 +5,4 @@ app:
 
 logging:
   level:
-    io.vdubovsky.statemachineexample: trace
+    io.vdubovsky.statemachineexample: info

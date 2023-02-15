@@ -27,9 +27,11 @@ public class PingPongStateMachineSetExternalRequestAction implements ActionAware
 
     @Override
     public void execute(StateContext<PingPongState, PingPongEvent> context) {
+        //Action
         String action = context.getExtendedState().get("action", String.class);
         context.getExtendedState().getVariables().put("pingPongAction", new PingPongActionBO().setAction(action));
 
+        //Event
         context.getStateMachine().sendEvent(
                 Mono.just(MessageBuilder.withPayload(PING_PONG_TO_PLAY_EVENT).build()))
                 .subscribe();

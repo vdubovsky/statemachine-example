@@ -15,7 +15,7 @@ import static io.vdubovsky.statemachineexample.statemachine.configuration.automa
 public class AutomatStatemachineInitialAction implements ActionAware<String, String> {
 
     // BUG in State machine, initial action has to be run in separate thread
-    // I found such bug 2 years ago, and it is still takes place.
+    // I found such bug 2 years ago, and it still takes place.
     @Override
     public void execute(StateContext<String, String> context) {
         new Thread(() -> {

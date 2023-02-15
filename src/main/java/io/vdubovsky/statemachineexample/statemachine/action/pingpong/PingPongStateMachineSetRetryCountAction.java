@@ -30,6 +30,7 @@ public class PingPongStateMachineSetRetryCountAction implements ActionAware<Ping
 
     @Override
     public void execute(StateContext<PingPongState, PingPongEvent> context) {
+        //Action
         Integer retryCount = context.getExtendedState().get("retryCount", Integer.class);
         if (retryCount == null) {
             retryCount = 0;
@@ -37,6 +38,7 @@ public class PingPongStateMachineSetRetryCountAction implements ActionAware<Ping
         retryCount++;
         context.getExtendedState().getVariables().put("retryCount", retryCount);
 
+        //Event
         if (Math.random() > 0.5) {
             context.getStateMachine().sendEvent(
                             Mono.just(MessageBuilder.withPayload(PING_PONG_TO_SET_ACTION_PING_EVENT).build()))

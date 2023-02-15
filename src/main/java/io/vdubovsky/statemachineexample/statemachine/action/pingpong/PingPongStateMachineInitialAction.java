@@ -26,8 +26,12 @@ public class PingPongStateMachineInitialAction implements ActionAware<PingPongSt
     }
 
     @Override
-    // BUG
+    // BUG in State machine, initial action has to be run in separate thread
+    // I found such bug 2 years ago, and it still takes place.
     public void execute(StateContext<PingPongState, PingPongEvent> context) {
+        //Action
+
+        //Event
         new Thread(() -> {
             if (Math.random() > 0.5) {
                 context.getStateMachine().sendEvent(

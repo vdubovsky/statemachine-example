@@ -34,10 +34,12 @@ public class PingPongStateMachinePlayAction implements ActionAware<PingPongState
 
     @Override
     public void execute(StateContext<PingPongState, PingPongEvent> context) {
+        //Action
         PingPongActionBO actionBO = context.getExtendedState().get("pingPongAction", PingPongActionBO.class);
         HttpEntity<PingPongActionBO> request = new HttpEntity<>(actionBO);
-        PingPongActionBO response = restTemplate.postForObject("https://eol3avjmqevxzt7.m.pipedream.net", request, PingPongActionBO.class);
+        PingPongActionBO response = restTemplate.postForObject("http://localhost:9999/api/ping-pong-server", request, PingPongActionBO.class);
 
+        //Event
         if (response.getAction().equals("ping")) {
             context.getStateMachine().sendEvent(
                             Mono.just(MessageBuilder.withPayload(PING_PONG_TO_SET_RESPONSE_EVENT).build()))
